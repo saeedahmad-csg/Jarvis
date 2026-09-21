@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>J.A.R.V.I.S. — AI Assistant</title>
+  <meta name="description" content="J.A.R.V.I.S. — Your intelligent AI assistant powered by Gemini.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Animated background -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+  <div class="bg-glow bg-glow-3"></div>
+
+  <!-- Scanline overlay -->
+  <div class="scanline-overlay"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="header" id="header">
+      <div class="header-left">
+        <div class="logo-container">
+          <div class="arc-reactor" id="arcReactor">
+            <div class="arc-ring arc-ring-outer"></div>
+            <div class="arc-ring arc-ring-middle"></div>
+            <div class="arc-ring arc-ring-inner"></div>
+            <div class="arc-core"></div>
+          </div>
+          <div class="logo-text">
+            <h1>J.A.R.V.I.S.</h1>
+            <p class="subtitle">Just A Rather Very Intelligent System</p>
+          </div>
+        </div>
+      </div>
+      <div class="header-right">
+        <div class="status-indicator" id="statusIndicator">
+          <span class="status-dot"></span>
+          <span class="status-text">ONLINE</span>
+        </div>
+        <button class="btn-icon" id="newChatBtn" title="New Conversation" aria-label="New Conversation">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Chat area -->
+    <main class="chat-area" id="chatArea">
+      <!-- Welcome screen -->
+      <div class="welcome-screen" id="welcomeScreen">
+        <div class="welcome-reactor">
+          <div class="arc-reactor arc-reactor-lg">
+            <div class="arc-ring arc-ring-outer"></div>
+            <div class="arc-ring arc-ring-middle"></div>
+            <div class="arc-ring arc-ring-inner"></div>
+            <div class="arc-core"></div>
+          </div>
+        </div>
+        <h2 class="welcome-title">Good <span id="greeting"></span>, Sir.</h2>
+        <p class="welcome-subtitle">I am J.A.R.V.I.S., your personal AI assistant. How may I assist you today?</p>
+        <div class="suggestion-chips" id="suggestionChips">
+          <button class="chip" data-prompt="Explain quantum computing in simple terms">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+            Quantum Computing
+          </button>
+          <button class="chip" data-prompt="Write a Python function that sorts a list using merge sort">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            Code a Merge Sort
+          </button>
+          <button class="chip" data-prompt="What are the latest breakthroughs in AI research?">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+            AI Breakthroughs
+          </button>
+          <button class="chip" data-prompt="Help me plan a productive daily routine">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            Daily Routine
+          </button>
+        </div>
+      </div>
+
+      <!-- Messages container -->
+      <div class="messages-container" id="messagesContainer"></div>
+    </main>
+
+    <!-- Input area -->
+    <footer class="input-area" id="inputArea">
+      <div class="input-wrapper">
+        <div class="input-glow"></div>
+        <textarea
+          id="messageInput"
+          placeholder="Ask me anything, Sir..."
+          rows="1"
+          aria-label="Message input"
+        ></textarea>
+        <button class="send-btn" id="sendBtn" aria-label="Send message" disabled>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
