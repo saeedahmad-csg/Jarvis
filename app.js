@@ -1,12 +1,12 @@
 /* ==========================================
-   J.A.R.V.I.S. — Application Logic
+   JARVIS — Application Logic
    ========================================== */
 
 const CONFIG = {
   API_KEY: CONFIG_API_KEY,
   API_URL: 'https://generativelanguage.googleapis.com/v1beta/interactions',
   MODEL: 'gemini-3.5-flash-lite',
-  SYSTEM_INSTRUCTION: `You are J.A.R.V.I.S. (Just A Rather Very Intelligent System), an advanced AI assistant inspired by Tony Stark's AI from the Marvel universe.
+  SYSTEM_INSTRUCTION: `You are JARVIS (Just A Rather Very Intelligent System), an advanced AI assistant inspired by Tony Stark's AI from the Marvel universe.
 
 Personality traits:
 - Polite, professional, and slightly witty — like a refined British butler with cutting-edge intelligence
@@ -145,7 +145,7 @@ function addMessage(role, content, isStreaming = false) {
   messageEl.id = `msg-${Date.now()}`;
 
   const avatarText = role === 'user' ? 'YOU' : 'J';
-  const labelText = role === 'user' ? 'You' : 'J.A.R.V.I.S.';
+  const labelText = role === 'user' ? 'You' : 'JARVIS';
 
   messageEl.innerHTML = `
     <div class="message-avatar">${avatarText}</div>
@@ -172,7 +172,7 @@ function addThinkingMessage() {
   messageEl.innerHTML = `
     <div class="message-avatar">J</div>
     <div class="message-content">
-      <div class="message-label">J.A.R.V.I.S.</div>
+      <div class="message-label">JARVIS</div>
       <div class="thinking-indicator">
         <div class="thinking-dots">
           <span></span><span></span><span></span>
