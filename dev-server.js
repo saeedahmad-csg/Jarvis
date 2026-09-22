@@ -36,7 +36,10 @@ const server = http.createServer((req, res) => {
 
   // Prevent directory traversal
   const safePath = path.normalize(relativePath).replace(/^(\.\.[\/\\])+/, '');
-  const filePath = path.join(__dirname, safePath);
+  const baseDir = fs.existsSync(path.join(__dirname, 'dist', 'index.html'))
+    ? path.join(__dirname, 'dist')
+    : __dirname;
+  const filePath = path.join(baseDir, safePath);
 
   const ext = path.extname(filePath).toLowerCase();
   const contentType = MIME_TYPES[ext] || 'application/octet-stream';

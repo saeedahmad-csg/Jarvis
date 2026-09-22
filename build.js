@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 let apiKey = process.env.GEMINI_API_KEY;
 
@@ -20,9 +21,26 @@ if (!apiKey && fs.existsSync('config.js')) {
 
 apiKey = apiKey || 'YOUR_GEMINI_API_KEY_HERE';
 
-const content = `// Auto-generated during build — do not edit manually
+const configContent = `// Auto-generated during build — do not edit manually
 const CONFIG_API_KEY = '${apiKey}';
 `;
 
-fs.writeFileSync('config.js', content);
-console.log('✓ config.js generated');
+// Write config.js at root
+fs.writeFileSync('config.js', configContent);
+
+// Prepare dist/ for Vercel static deployment
+const distDir = path.join(__dirname, 'dist');
+if (!fs.existsSync(distDir)) {
+  fs.mkdirSync(distDir, { recursive: true });
+}
+
+fs.writeFileSync(path.join(distDir, 'config.js'), configContent);
+
+const filesToCopy = ['index.html', 'style.css', 'app.js'];
+for (const file of filesToCopy) {
+  if (fs.existsSync(file)) {
+    fs.copyFileSync(file, path.join(distDir, file));
+  }
+}
+
+console.log('✓ Build complete: config.js generated and dist/ ready');
