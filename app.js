@@ -208,6 +208,10 @@ async function getJarvisResponse(userMessage) {
   let fullText = '';
 
   try {
+    if (!CONFIG.API_KEY || CONFIG.API_KEY === 'YOUR_GEMINI_API_KEY_HERE') {
+      throw new Error('Gemini API key is not configured. Please set your key in config.js or in .env (GEMINI_API_KEY=your_key).');
+    }
+
     const body = {
       model: CONFIG.MODEL,
       system_instruction: CONFIG.SYSTEM_INSTRUCTION,
